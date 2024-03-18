@@ -55,19 +55,19 @@ EOT
         $currentVersion = $this->versionStorage->getCurrentVersion();
 
         $table = new Table($output);
-        $table->setHeaders(array(
+        $table->setHeaders([
             '', 'Version', 'Date', 'Migrated', 'Path',
-        ));
+        ]);
 
         foreach ($versionCollection->getAllVersions() as $versionName => $versionClass) {
             $reflection = new \ReflectionClass($versionClass);
-            $table->addRow(array(
+            $table->addRow([
                 $versionName == $currentVersion ? '*' : '',
                 $versionName,
                 $this->getDate($versionName),
-                isset($executedVersions[$versionName]) ? '<info>' . $executedVersions[$versionName]['executed']->format('Y-m-d H:i:s')  . '</info>' : 'n/a',
+                isset($executedVersions[$versionName]) ? '<info>'.$executedVersions[$versionName]['executed']->format('Y-m-d H:i:s').'</info>' : 'n/a',
                 substr($reflection->getFileName(), strlen(getcwd()) + 1),
-            ));
+            ]);
         }
 
         $table->render();

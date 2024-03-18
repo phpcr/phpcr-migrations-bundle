@@ -22,7 +22,7 @@ class PhpcrMigrationsExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         $container->setParameter('phpcr_migrations.version_node_name', $config['version_node_name']);
 
@@ -31,7 +31,7 @@ class PhpcrMigrationsExtension extends Extension
         foreach ($container->getParameter('kernel.bundles') as $bundleFqn) {
             $reflection = new \ReflectionClass($bundleFqn);
             $path = dirname($reflection->getFileName());
-            $migrationsPath = $path . '/Resources/phpcr-migrations';
+            $migrationsPath = $path.'/Resources/phpcr-migrations';
 
             if (file_exists($migrationsPath)) {
                 $paths[] = $migrationsPath;

@@ -21,6 +21,10 @@ jobs:
             matrix:
                 include:
                     - php-version: '7.4'
+                      symfony-version: '^4.4'
+                      monolog-version: '^1.0'
+
+                    - php-version: '7.4'
                       symfony-version: '^5.4'
                       monolog-version: '^2.0'
 

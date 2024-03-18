@@ -23,9 +23,9 @@ class MigrateCommand extends Command
 {
     private $factory;
     private $container;
-    private $actions = array(
+    private $actions = [
         'up', 'down', 'top', 'bottom',
-    );
+    ];
 
     public function __construct(
         MigratorFactory $factory,

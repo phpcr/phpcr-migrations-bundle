@@ -18,7 +18,7 @@ class Version201401011300 implements VersionInterface, ContainerAwareInterface
 {
     private $container;
 
-    public function setContainer(ContainerInterface $container = null)
+    public function setContainer(?ContainerInterface $container = null)
     {
         $this->container = $container;
     }
@@ -26,7 +26,7 @@ class Version201401011300 implements VersionInterface, ContainerAwareInterface
     public function up(SessionInterface $session)
     {
         if (!$this->container) {
-            throw new \Exception('This Version class implements ContainerAwareInterface but no container has been set.');
+            throw new Exception('This Version class implements ContainerAwareInterface but no container has been set.');
         }
         $session->getRootNode()->addNode('camel');
     }

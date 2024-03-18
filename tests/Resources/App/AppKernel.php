@@ -22,23 +22,23 @@ class AppKernel extends TestKernel
 {
     public function configure()
     {
-        $this->requireBundleSets(array(
+        $this->requireBundleSets([
             'default',
             'phpcr_odm',
-        ));
+        ]);
 
-        $this->addBundles(array(
+        $this->addBundles([
             new PhpcrMigrationsBundle(),
             new OneTestBundle(),
             new TwoTestBundle(),
-        ));
+        ]);
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->import(CMF_TEST_CONFIG_DIR . '/default.php');
-        $loader->import(CMF_TEST_CONFIG_DIR . '/phpcr_odm.php');
-        $loader->load(__DIR__ . '/config/config.yml');
+        $loader->import(CMF_TEST_CONFIG_DIR.'/default.php');
+        $loader->import(CMF_TEST_CONFIG_DIR.'/phpcr_odm.php');
+        $loader->load(__DIR__.'/config/config.yml');
     }
 
     protected function prepareContainer(ContainerBuilder $container)

@@ -1,4 +1,5 @@
-tests/Resources/App/var
-composer.lock
-vendor
-.phpunit.result.cache
+/.php-cs-fixer.cache
+/composer.lock
+/tests/Resources/App/var
+/vendor
+/.phpunit.result.cache

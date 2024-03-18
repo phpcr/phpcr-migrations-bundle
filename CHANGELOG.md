@@ -1,13 +1,9 @@
 CHANGELOG
 =========
 
-1.3.0
+1.4.0
 -----
 
-- Support Symfony 6
-- Drop Support for PHP <= 7.1 and Symfony <= 4.3
+Initial release after renaming from `dantleech/phpcr-migrations-bundle` to `phpcr/phpcr-migrations-bundle`.
 
-1.2.0
------
-
-- Support Symfony 5
+Adjusted namespaces to match PHPCR.

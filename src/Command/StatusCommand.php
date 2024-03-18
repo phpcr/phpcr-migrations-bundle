@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace DTL\Bundle\PhpcrMigrations\Command;
+namespace PHPCR\PhpcrMigrationsBundle\Command;
 
 use PHPCR\Migrations\VersionFinder;
 use PHPCR\Migrations\VersionStorage;

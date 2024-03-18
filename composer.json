@@ -1,11 +1,15 @@
 {
-    "name": "dantleech/phpcr-migrations-bundle",
+    "name": "phpcr/phpcr-migrations-bundle",
     "description": "PHPCR migrations bundle",
     "license": "MIT",
     "authors": [
         {
             "name": "Daniel Leech",
             "email": "daniel@dantleech.com"
+        },
+        {
+            "name": "David Buchmann",
+            "email": "mail@davidbu.ch"
         }
     ],
     "require": {
@@ -31,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "DTL\\Bundle\\PhpcrMigrations\\": "."
+            "PHPCR\\PhpcrMigrationsBundle\\": "src/"
         }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.x-dev"
+    "autoload-dev": {
+        "psr-4": {
+            "PHPCR\\PhpcrMigrationsBundle\\Tests\\": "tests/"
         }
     }
 }

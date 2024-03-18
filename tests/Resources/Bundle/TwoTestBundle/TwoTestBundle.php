@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace DTL\Bundle\PhpcrMigrations\Tests\Resources\Bundle\TwoTestBundle;
+namespace PHPCR\PhpcrMigrationsBundle\Tests\Resources\Bundle\TwoTestBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace DTL\Bundle\PhpcrMigrations\Tests\Functional;
+namespace PHPCR\PhpcrMigrationsBundle\Tests\Functional;
 
 class StatusCommandTest extends BaseTestCase
 {
     /**
      * It should list all of the migrations.
      */
-    public function testShowAll()
+    public function testShowAll(): void
     {
         $tester = $this->executeCommand('phpcr_migrations.command.status', array());
         $display = $tester->getDisplay();
@@ -27,9 +27,9 @@ class StatusCommandTest extends BaseTestCase
     /**
      * It should show the current version.
      */
-    public function testShowCurrentVersion()
+    public function testShowCurrentVersion(): void
     {
-        $tester = $this->executeCommand('phpcr_migrations.command.migrate', array('to' => '201501011500'));
+        $this->executeCommand('phpcr_migrations.command.migrate', array('to' => '201501011500'));
         $tester = $this->executeCommand('phpcr_migrations.command.status', array());
         $display = $tester->getDisplay();
 

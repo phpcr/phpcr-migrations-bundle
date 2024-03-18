@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace DTL\Bundle\PhpcrMigrations\Tests\Resources\App;
+namespace PHPCR\PhpcrMigrationsBundle\Tests\Resources\App;
 
-use DTL\Bundle\PhpcrMigrations\PhpcrMigrationsBundle;
-use DTL\Bundle\PhpcrMigrations\Tests\Resources\Bundle\OneTestBundle\OneTestBundle;
-use DTL\Bundle\PhpcrMigrations\Tests\Resources\Bundle\TwoTestBundle\TwoTestBundle;
+use PHPCR\PhpcrMigrationsBundle\PhpcrMigrationsBundle;
+use PHPCR\PhpcrMigrationsBundle\Tests\Resources\Bundle\OneTestBundle\OneTestBundle;
+use PHPCR\PhpcrMigrationsBundle\Tests\Resources\Bundle\TwoTestBundle\TwoTestBundle;
 use Symfony\Cmf\Component\Testing\HttpKernel\TestKernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -44,7 +44,7 @@ class AppKernel extends TestKernel
     protected function prepareContainer(ContainerBuilder $container)
     {
         parent::prepareContainer($container);
-        $container->setParameter('cmf_testing.bundle_fqn', 'DTL\Bundle\PhpcrMigrations\PhpcrMigrationsBundle');
+        $container->setParameter('cmf_testing.bundle_fqn', 'Phpcr\PhpcrMigrationsBundle\PhpcrMigrationsBundle');
     }
 
     protected function getKernelParameters(): array

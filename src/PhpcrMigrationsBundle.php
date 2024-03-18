@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace DTL\Bundle\PhpcrMigrations\Tests\Resources\Bundle\OneTestBundle;
+namespace PHPCR\PhpcrMigrationsBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class OneTestBundle extends Bundle
+class PhpcrMigrationsBundle extends Bundle
 {
 }

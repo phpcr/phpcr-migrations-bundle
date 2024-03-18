@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace DTL\Bundle\PhpcrMigrations\Tests\Functional;
+namespace PHPCR\PhpcrMigrationsBundle\Tests\Functional;
 
 class MigrateCommandTest extends BaseTestCase
 {
     /**
      * It should migrate all the unexecuted migrators.
      */
-    public function testMigrateToLatest()
+    public function testMigrateToLatest(): void
     {
         $this->executeCommand('phpcr_migrations.command.migrate', array());
 
@@ -27,7 +27,7 @@ class MigrateCommandTest extends BaseTestCase
     /**
      * It should upgrade to a given version.
      */
-    public function testUpgradeTo()
+    public function testUpgradeTo(): void
     {
         $tester = $this->executeCommand('phpcr_migrations.command.migrate', array('to' => '201401011300'));
         $display = $tester->getDisplay();
@@ -41,9 +41,9 @@ class MigrateCommandTest extends BaseTestCase
     /**
      * It should downgrade to a given version.
      */
-    public function testUpgradeRevertTo()
+    public function testUpgradeRevertTo(): void
     {
-        $tester = $this->executeCommand('phpcr_migrations.command.migrate', array());
+        $this->executeCommand('phpcr_migrations.command.migrate', array());
         $tester = $this->executeCommand('phpcr_migrations.command.migrate', array('to' => '201501011200'));
         $display = $tester->getDisplay();
 

@@ -2,7 +2,10 @@ PHPCR Migrations Bundle
 =======================
 
 This library provides a Symfony integration for the [PHPCR migrations
-library](https://github.com/dantleech/phpcr-migrations).
+library](https://github.com/phpcr/phpcr-migrations).
+
+It has initially been created by  Daniel Leech as `dantleech/phpcr-migrations-bundle` and was then
+donated to the PHPCR organization.
 
 Configuration
 -------------
@@ -10,12 +13,12 @@ Configuration
 Configure the path to your migrations:
 
 ````yaml
-# app/config.yml
+# config/packages/phpcr-migrations.yaml
 phpcr_migrations:
-    paths: [%kernel.root_dir%/phpcr-migrations]
+    paths: [%kernel.project_dir%/phpcr-migrations]
 ````
 
-Or the bundle will automatically pick up any migrations in the
+And the bundle will automatically pick up any migrations in the
 `Resources/phpcr-migrations` folder in any bundles registered in the kernel.
 
 Creating migrations
@@ -25,19 +28,19 @@ First create two new migration files:
 
 ````php
 <?php
-// app/phpcr-migrations/Version201501011200.php
+// phpcr-migrations/Version201501011200.php
 
 use PHPCR\SessionInterface;
 use PHPCR\Migrations\VersionInterface;
 
 class Version201501011200 implements VersionInterface
 {
-    public function up(SessionInterface $session)
+    public function up(SessionInterface $session): void
     {
         $session->getRootNode()->addNode('hello');
     }
 
-    public function down(SessionInterface $session)
+    public function down(SessionInterface $session): void
     {
         $session->getRootNode()->getNode('hello')->remove();
     }
@@ -55,12 +58,12 @@ use PHPCR\Migrations\VersionInterface;
 
 class Version201501011212 implements VersionInterface
 {
-    public function up(SessionInterface $session)
+    public function up(SessionInterface $session): void
     {
         $session->getNode('/hello')->addNode('world');
     }
 
-    public function down(SessionInterface $session)
+    public function down(SessionInterface $session): void
     {
         $session->getNode('/hello')->getNode('world')->remove();
     }
@@ -99,7 +102,7 @@ Upgrading 2 version(s):
  + [2/2]: 201501011212
 ````
 
-This should run the two migrations, your status should not look like this:
+This should run the two migrations.
 
 Reverting
 ---------
@@ -129,4 +132,3 @@ Actions are:
 - `down`: Revert one version
 - `top`: Migrate to the latest version
 - `bottom`: Revert all migrations
-

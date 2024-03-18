@@ -19,19 +19,19 @@
             <argument type="service" id="doctrine_phpcr.session" />
         </service>
 
-        <service id="phpcr_migrations.command.status" class="DTL\Bundle\PhpcrMigrations\Command\StatusCommand" public="true">
+        <service id="phpcr_migrations.command.status" class="PHPCR\PhpcrMigrationsBundle\Command\StatusCommand" public="true">
             <argument type="service" id="phpcr_migrations.version_storage" />
             <argument type="service" id="phpcr_migrations.version_finder" />
             <tag name="console.command" />
         </service>
 
-        <service id="phpcr_migrations.command.migrate" class="DTL\Bundle\PhpcrMigrations\Command\MigrateCommand" public="true">
+        <service id="phpcr_migrations.command.migrate" class="PHPCR\PhpcrMigrationsBundle\Command\MigrateCommand" public="true">
             <argument type="service" id="phpcr_migrations.migrator_factory" />
             <argument type="service" id="service_container" />
             <tag name="console.command" />
         </service>
 
-        <service id="phpcr_migrations.command.initialize" class="DTL\Bundle\PhpcrMigrations\Command\InitializeCommand" public="true">
+        <service id="phpcr_migrations.command.initialize" class="PHPCR\PhpcrMigrationsBundle\Command\InitializeCommand" public="true">
             <argument type="service" id="phpcr_migrations.migrator_factory" />
             <tag name="console.command" />
         </service>

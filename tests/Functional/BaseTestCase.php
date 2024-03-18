@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace DTL\Bundle\PhpcrMigrations\Tests\Functional;
+namespace PHPCR\PhpcrMigrationsBundle\Tests\Functional;
 
 use Symfony\Cmf\Component\Testing\Functional\BaseTestCase as CmfBaseTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
 abstract class BaseTestCase extends CmfBaseTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->db('PHPCR')->purgeRepository();
         $this->session = $this->getContainer()->get('doctrine_phpcr.default_session');
@@ -27,7 +27,7 @@ abstract class BaseTestCase extends CmfBaseTestCase
         }
     }
 
-    protected function executeCommand($serviceId, $arguments)
+    protected function executeCommand($serviceId, $arguments): CommandTester
     {
         $command = $this->getContainer()->get($serviceId);
         $tester = new CommandTester($command);

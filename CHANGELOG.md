@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-1.5.0 (unreleased)
-------------------
+1.5.0
+-----
 
 * Allow installation with Symfony 7
 * Drop support for PHP < 8.1 and modernize code

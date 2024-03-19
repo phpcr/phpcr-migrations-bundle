@@ -21,22 +21,21 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class MigrateCommand extends Command
 {
-    private $factory;
-    private $container;
-    private $actions = [
+    /**
+     * @var string[]
+     */
+    private array $actions = [
         'up', 'down', 'top', 'bottom',
     ];
 
     public function __construct(
-        MigratorFactory $factory,
-        ContainerInterface $container
+        private MigratorFactory $factory,
+        private ContainerInterface $container
     ) {
         parent::__construct();
-        $this->factory = $factory;
-        $this->container = $container;
     }
 
-    public function configure()
+    public function configure(): void
     {
         $this->setName('phpcr:migrations:migrate');
         $this->addArgument('to', InputArgument::OPTIONAL, sprintf(
@@ -47,7 +46,7 @@ class MigrateCommand extends Command
         $this->setHelp(<<<EOT
 Migrate to a specific version or perform an action.
 
-By default it will migrate to the latest version:
+By default, it will migrate to the latest version:
 
     $ %command.full_name%
 
@@ -70,7 +69,7 @@ EOT
         );
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $to = $input->getArgument('to');
         $migrator = $this->factory->getMigrator();

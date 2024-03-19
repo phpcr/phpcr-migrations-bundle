@@ -20,19 +20,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class StatusCommand extends Command
 {
-    private $versionStorage;
-    private $finder;
-
     public function __construct(
-        VersionStorage $versionStorage,
-        VersionFinder $finder
+        private VersionStorage $versionStorage,
+        private VersionFinder $finder,
     ) {
         parent::__construct();
-        $this->versionStorage = $versionStorage;
-        $this->finder = $finder;
     }
 
-    public function configure()
+    public function configure(): void
     {
         $this->setName('phpcr:migrations:status');
         $this->setDescription('Show the current migration status');
@@ -48,10 +43,10 @@ EOT
         );
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $versionCollection = $this->finder->getCollection();
-        $executedVersions = (array) $this->versionStorage->getPersistedVersions();
+        $executedVersions = $this->versionStorage->getPersistedVersions();
         $currentVersion = $this->versionStorage->getCurrentVersion();
 
         $table = new Table($output);
@@ -62,7 +57,7 @@ EOT
         foreach ($versionCollection->getAllVersions() as $versionName => $versionClass) {
             $reflection = new \ReflectionClass($versionClass);
             $table->addRow([
-                $versionName == $currentVersion ? '*' : '',
+                $versionName === $currentVersion ? '*' : '',
                 $versionName,
                 $this->getDate($versionName),
                 isset($executedVersions[$versionName]) ? '<info>'.$executedVersions[$versionName]['executed']->format('Y-m-d H:i:s').'</info>' : 'n/a',
@@ -81,7 +76,7 @@ EOT
         return 0;
     }
 
-    private function getDate($versionName)
+    private function getDate($versionName): string
     {
         return date('Y-m-d H:i', strtotime($versionName));
     }

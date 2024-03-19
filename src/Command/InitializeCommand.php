@@ -18,16 +18,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class InitializeCommand extends Command
 {
-    private $factory;
-
     public function __construct(
-        MigratorFactory $factory
+        private MigratorFactory $factory
     ) {
         parent::__construct();
-        $this->factory = $factory;
     }
 
-    public function configure()
+    public function configure(): void
     {
         $this->setName('phpcr:migrations:initialize');
         $this->setDescription('Initialize the migration versions');
@@ -40,7 +37,7 @@ EOT
         );
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->factory->getMigrator()->initialize();
 
